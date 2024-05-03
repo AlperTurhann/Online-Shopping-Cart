@@ -6,9 +6,11 @@ const productsURL: string = 'https://api.escuelajs.co/api/v1/products';
 async function productMapper(): Promise<Product[]> {
     var products: Product[] = [];
 
-    await getData(productsURL)
-    .then(data => {
-        if (data) {
+    try {
+        const { data, error } = await getData(productsURL);
+
+        if (error) console.error(error);
+        else if (data) {
             data.forEach((dataProduct: any) => {
                 if (isProduct(dataProduct)) {
                     const product: Product = {
@@ -21,11 +23,10 @@ async function productMapper(): Promise<Product[]> {
                         }
                     }
                     products.push(product);
-                } else console.log('Invalid product data format!');
+                } else console.error('Invalid product data format!');
             });
-        } else console.log('The products could not be accessed!');
-    })
-    .catch(error => console.log(error));
+        } else console.error('The products could not be accessed!');
+    } catch (error) { console.error(error); }
 
     return products;
 }

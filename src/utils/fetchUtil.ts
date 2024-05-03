@@ -1,16 +1,13 @@
-async function getData(url: string): Promise<any> {
+async function getData(url: string): Promise<{data: any, error: Error | null}> {
     try {
         const response: Response = await fetch(url);
-
         const data = await response.json();
-
-        if(response.ok) return data;
-
-        console.error('Server error:', data.error.message);
-        return null;
+        if(response.ok) return {data, error: null};
+        const errorMessage: string = 'Server error:' + data.error.message;
+        return {data: null, error: new Error(errorMessage)};
     } catch(error) {
-        console.error('Fetch error:', error);
-        return null;
+        const errorMessage: string = 'Fetch error:' + error;
+        return {data: null, error: new Error(errorMessage)};
     }
 }
 
