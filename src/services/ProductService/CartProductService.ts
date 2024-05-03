@@ -14,7 +14,7 @@ class CartProductService implements IProductService {
         return product;
     }
     addProduct(id: number): void {
-        const tmpProduct = StoreProductService.getInstance().getProduct(id);
+        const tmpProduct: Product | undefined = StoreProductService.getInstance().getProduct(id);
         if (tmpProduct) {
             this._products.push(tmpProduct);
             console.log('Added Product: ', StoreProductService.getInstance().getProduct(id));

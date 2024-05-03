@@ -1,8 +1,13 @@
 interface Product {
     id: number,
-    name: string,
+    title: string,
     price: number,
-    categoryName: string
+    category: Category
+}
+
+interface Category {
+    id: number,
+    name: string
 }
 
 export default Product;
