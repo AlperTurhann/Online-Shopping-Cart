@@ -1,4 +1,9 @@
-async function getData(url: string): Promise<{data: any, error: Error | null}> {
+interface PromiseT {
+    data: any,
+    error: Error | null
+}
+
+async function getData(url: string): Promise<PromiseT> {
     try {
         const response: Response = await fetch(url);
         const data = await response.json();

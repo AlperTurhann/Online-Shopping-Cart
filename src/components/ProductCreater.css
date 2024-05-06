@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.product-store {
+    @apply w-full h-20 bg-gray-400 flex rounded;
+}
+.product-cart {
+    @apply w-full h-20 bg-gray-600 flex rounded;
+}
+
+.left-side {
+    @apply w-3/4 h-full flex flex-col justify-center text-start pl-2;
+}
+.right-side {
+    @apply w-1/2 h-full flex flex-col justify-center text-end items-end pr-2;
+}
+
+.p-product-name {
+    @apply font-bold line-clamp-2 text-clip;
+}
+.p-product-category {
+    @apply truncate;
+}
+
+.button-add {
+    @apply w-auto bg-green-800 text-gray-400 hover:bg-green-900 hover:text-gray-300 px-3 py-2 md:px-4 lg:px-5;
+}
+.button-remove {
+    @apply w-auto bg-red-800 text-gray-400 hover:bg-red-900 hover:text-gray-300 px-3 py-2 md:px-4 lg:px-5;
+}

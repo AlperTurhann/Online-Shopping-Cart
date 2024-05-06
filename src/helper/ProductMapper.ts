@@ -12,7 +12,7 @@ async function productMapper(): Promise<Product[]> {
         if (error) console.error(error);
         else if (data) {
             data.forEach((dataProduct: any) => {
-                if (isProduct(dataProduct)) {
+                if (isProduct(dataProduct)) { //products = [...data];
                     const product: Product = {
                         id: dataProduct.id || -1,
                         title: dataProduct.title || 'Empty Product',
