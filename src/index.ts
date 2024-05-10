@@ -2,12 +2,12 @@ import StoreProductService from "./services/ProductService/StoreProductService";
 import CartProductService from "./services/ProductService/CartProductService";
 import createProduct from "./components/ProductCreater";
 
+const container: HTMLElement | null = document.getElementById('container');
 const store: HTMLElement | null = document.getElementById('store');
 const cartPanel: HTMLElement | null = document.getElementById('side-bar-cart');
 const checkoutBtn: HTMLButtonElement = document.getElementById('button-checkout') as HTMLButtonElement;
 
 setProductServices();
-openAndCloseCartPanel();
 
 document.getElementById('button-cart')?.addEventListener('click', openAndCloseCartPanel);
 checkoutBtn.addEventListener('click', async () => {
@@ -23,16 +23,16 @@ checkoutBtn.addEventListener('click', async () => {
 });
 
 function openAndCloseCartPanel() {
-  if (cartPanel && store) {
+  if (cartPanel && store && container) {
     if (cartPanel.classList.contains('hidden')) {
       cartPanel.classList.remove('hidden');
-      store.classList.remove('w-full');
-      store.classList.add('w-2/3');
-    }
-    else {
+      store.classList.remove('col-span-3');
+      store.classList.add('col-span-2');
+      cartPanel.style.width = `${container.clientWidth - store.clientWidth}px`;
+    } else {
       cartPanel.classList.add('hidden');
-      store.classList.remove('w-2/3');
-      store.classList.add('w-full');
+      store.classList.remove('col-span-2');
+      store.classList.add('col-span-3');
     }
   }
 }

@@ -5,6 +5,9 @@ export default {
     "./*.ts"
   ],
   theme: {
+    container: {
+      center: true,
+    },
     extend: {},
   },
   plugins: [],
